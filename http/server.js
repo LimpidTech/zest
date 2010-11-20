@@ -1,5 +1,5 @@
 var http = require('http'),
-    router = require('zest').router
+    zest = require('zest')
 
 	/**
 	 * An HTTP server.
@@ -14,7 +14,7 @@ this.Server = function()
 	this.application = undefined
 
 		// The router is our function that every request begins within
-	this.router = router
+	this.router = zest.http.router
 
 		// An array of URLs which this server is currently responding to
 	this.url_patterns = undefined
