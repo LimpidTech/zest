@@ -1,3 +1,12 @@
+var zest = require('zest')
+
+	// Create a new error type
+var ResolutionError = zest.util.errors.create_error()
+this.ResolutionError = ResolutionError
+
+	/**
+	 * Decides whether or not a specific given URL matches the request URL
+	 */
 function resolve_url(url)
 {
 	if (typeof url.request_uri == 'string'  && url.request_uri == this.url)
@@ -12,6 +21,10 @@ function resolve_url(url)
 	return false
 }
 
+	/**
+	 * Loops through the given request and URL patterns to pass to resolve_url
+	 * and finally decide whether or not it successfully resolved the required URL.
+	 */
 function resolver(url_patterns)
 {
 	matches = url_patterns.filter(resolve_url, this)
@@ -19,13 +32,14 @@ function resolver(url_patterns)
 	if (matches.length != 1)
 	{
 		if (matches.length > 1)
-			throw new Error('You can only have one URL matching this request.' +
+			throw new ResolutionError('You can only have one URL matching this request.' +
 			                'There were ' + matches.length)
 		else
-			throw new Error('No URLs matched the given request URI.')
+			throw new ResolutionError('No URLs matched the given request URI.')
 	}
 
 	return matches[0]
 }
 
 this.resolver = resolver
+
