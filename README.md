@@ -5,7 +5,6 @@
 
 To my dismay, there aren't really any "full-featured" frameworks for NodeJS. I needed a framework with flexibilities that just aren't supported by any node.js frameworks that I've come across yet, so I wrote my own. This framework aims to be as flexible as possible while making development as fast as possible and not forcing you to use anything that you don't need.
 
-
 ## What does it do?
 
 Well, right now it doesn't do much. I've just started it, but for now we have this:
