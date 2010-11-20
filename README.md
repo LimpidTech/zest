@@ -11,8 +11,8 @@ To my dismay, there aren't really any "full-featured" frameworks for NodeJS. I n
 Well, right now it doesn't do much. I've just started it, but for now we have this:
 
 * Flexible URL routing. You simply provide a list of URLs to zest.http.server, and it will route them to whatever views it needs to. Currently, the following types of URLs are supported:
-	* Regular Expressions
-	* Static strings
+	* Regular Expressions **(automatically passes matches as arguments)**
+	* Static strings **(no dynamic strings, so no argument support)**
 
 ## What is planned?
 
