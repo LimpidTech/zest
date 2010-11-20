@@ -9,24 +9,22 @@ function router(request, response)
 	// TODO: Hierarchal URLs.
 	try
 	{
-		var resolved_url = resolver.apply(request, [this.url_patterns])
-
-		// A very basic middleware implementation
 		this.middleware.forEach(function(middleware){
-			var middleware_response = middleware(request, response)
+			var middleware_response
+
+			if (typeof middleware.process_request != 'undefined')
+				middleware_response = middleware.process_request(request, response)
 
 			if (typeof middleware_response != 'undefined')
-			{
-				request = middleware_response[0]
-				response = middleware_response[1]
-			}
+				request = middleware_response
 		})
+
+		var resolved_url = resolver.apply(request, [this.url_patterns])
 
 		resolved_url.method.apply(this, [
 			request,
 			response
 		].concat(resolved_url.arguments))
-
 	}
 
 	catch (e)
