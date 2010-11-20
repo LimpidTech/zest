@@ -11,8 +11,8 @@ To my dismay, there aren't really any "full-featured" frameworks for NodeJS. I n
 Well, right now it doesn't do much. I've just started it, but for now we have this:
 
 * Flexible URL routing. You simply provide a list of URLs to zest.http.server, and it will route them to whatever views it needs to. Currently, the following types of URLs are supported:
-	* Regular Expressions **(automatically passes matches as arguments)**
-	* Static strings **(no dynamic strings, so no argument support)**
+	* Regular Expressions *(automatically passes matches as arguments)*
+	* Static strings *(no dynamic strings, so no argument support)*
 
 ## What is planned?
 
@@ -21,7 +21,7 @@ There are a lot of planned features for Zest. Initially, I want to see a framewo
 * More basic HTTP tools
 * Arbitrary / flexible template loading
 * Support for automatic HTML form generation
-* Object Relational Mapping **(unless someone shows me something worth the dependancy)**
+* Object Relational Mapping *(unless someone shows me something worth the dependancy)*
 
 After this, I will be looking into expanding the current feature set with more additions and interesting features.
 
