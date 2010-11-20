@@ -3,6 +3,12 @@ function resolve_url(url)
 	if (typeof url.request_uri == 'string'  && url.request_uri == this.url)
 		return true
 
+	else if (typeof url.request_uri == 'function')
+	{
+		if (url.request_uri instanceof RegExp && url.request_uri.test(this.url))
+			return true
+	}
+
 	return false
 }
 
