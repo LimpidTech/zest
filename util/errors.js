@@ -2,11 +2,11 @@
 	 * Creates and returns an error object that can be used to easily define new
 	 * errors.
 	 */
-function create_error()
+function create_error(error_name)
 {
 	var final_error = function(message, fileName, lineNumber)
 	{
-		this.name = 'Resolution Error'
+		this.name = error_name
 
 		this.message = message
 		this.fileName = fileName

@@ -1,7 +1,7 @@
 var zest = require('zest')
 
 	// Create a new error type
-var ResolutionError = zest.util.errors.create_error()
+var ResolutionError = zest.util.errors.create_error('ResolutionError')
 this.ResolutionError = ResolutionError
 
 	/**

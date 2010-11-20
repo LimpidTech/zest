@@ -7,25 +7,43 @@ var resolver = require('./resolver').resolver
 function router(request, response)
 {
 	// TODO: Hierarchal URLs.
-	var resolved_url = resolver.apply(request, [this.url_patterns])
+	try
+	{
+		var resolved_url = resolver.apply(request, [this.url_patterns])
 
-	// A very basic middleware implementation
-	this.middleware.forEach(function(middleware){
-		var middleware_response = middleware(request, response)
+		// A very basic middleware implementation
+		this.middleware.forEach(function(middleware){
+			var middleware_response = middleware(request, response)
 
-		if (typeof middleware_response != 'undefined')
+			if (typeof middleware_response != 'undefined')
+			{
+				request = middleware_response[0]
+				response = middleware_response[1]
+			}
+		})
+
+		if (resolved_url != false)
+			resolved_url.method.apply(this, [request, response])
+
+	}
+
+	catch (e)
+	{
+		// If we didn't resolve a URL, we have a 404.
+		if (e.name == 'ResolutionError')
 		{
-			request = middleware_response[0]
-			response = middleware_response[1]
+			response.writeHead(404, {})
 		}
-	})
+		else
+		{
+			throw e
+		}
+	}
 
-	if (resolved_url != false)
-		resolved_url.method.apply(this, [request, response])
-
-	// If we didn't resolve a URL, we have a 404.
-	response.writeHead(404, {})
-	response.end()
+	finally
+	{
+		response.end()
+	}
 }
 
 this.router = router
