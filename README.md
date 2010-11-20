@@ -15,7 +15,7 @@ Well, right now it doesn't do much. I've just started it, but for now we have th
 
 ## What is planned?
 
-There are a lot of planned features for Zest. Initially, I want to see a framework where every componenet is generally usable and flexible enough to be extended. Once this condition has been met, I will be adding the following:
+There are a lot of planned features for Zest. Initially, I want to see a framework where every componenet is generally usable and flexible enough to be extended. I will be adding the following to reach this goal:
 
 * More basic HTTP tools
 * Arbitrary / flexible template loading
