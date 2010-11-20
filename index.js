@@ -1,6 +1,6 @@
 function resolve_url(url)
 {
-	if (typeof url.request_uri == 'string')// && url.request_uri == this.url)
+	if (typeof url.request_uri == 'string'  && url.request_uri == this.url)
 		return true
 
 	return false
