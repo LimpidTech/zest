@@ -22,8 +22,10 @@ function router(request, response)
 			}
 		})
 
-		if (resolved_url != false)
-			resolved_url.method.apply(this, [request, response])
+		resolved_url.method.apply(this, [
+			request,
+			response
+		].concat(resolved_url.arguments))
 
 	}
 

@@ -14,8 +14,17 @@ function resolve_url(url)
 
 	else if (typeof url.request_uri == 'function')
 	{
-		if (url.request_uri instanceof RegExp && url.request_uri.test(this.url))
-			return true
+		if (url.request_uri instanceof RegExp)
+		{
+			var matches = url.request_uri.exec(this.url)
+
+			if (matches != null)
+			{
+				// Append any extra arguments received from the expression
+				url.arguments = matches.splice(1)
+				return true
+			}
+		}
 	}
 
 	return false
@@ -27,7 +36,7 @@ function resolve_url(url)
 	 */
 function resolver(url_patterns)
 {
-	matches = url_patterns.filter(resolve_url, this)
+	var matches = url_patterns.filter(resolve_url, this)
 
 	if (matches.length != 1)
 	{

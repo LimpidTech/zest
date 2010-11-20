@@ -8,7 +8,9 @@ var URL = function(request_uri, module, method)
 	module = require(module)
 
 	this.request_uri = request_uri
+
 	this.method = module[method]
+	this.arguments = []
 }
 
 URL.prototype = new Object()
