@@ -13,7 +13,19 @@ function resolve_url(url)
 this.router = function(request, response)
 {
 	// TODO: Hierarchal URLs.
-	var resolved_url, resolved_urls = this.url_patterns.filter(resolve_url, request)
+	var resolved_url,
+	    resolved_urls = this.url_patterns.filter(resolve_url, request)
+
+	// A very basic middleware implementation
+	this.middleware.forEach(function(middleware){
+		var middleware_response = middleware(request, response)
+
+		if (typeof middleware_response != 'undefined')
+		{
+			request = middleware_response[0]
+			response = middleware_response[1]
+		}
+	})
 
 	if (resolved_urls.length > 1)
 		throw new Error('You can only have one URL matching this request.' +
@@ -23,7 +35,7 @@ this.router = function(request, response)
 		resolved_url = resolved_urls[0]
 
 	if (typeof resolved_url != 'undefined' && typeof resolved_url.method == 'function')
-		resolved_url.method(request, response)
+		resolved_url.method.apply(this, [request, response])
 
 	// If we didn't resolve a URL, we have a 404.
 	response.writeHead(404, {})

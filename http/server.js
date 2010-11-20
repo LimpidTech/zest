@@ -20,15 +20,22 @@ this.Server = function()
 	this.url_patterns = undefined
 
 		// Start listening with this server.
-	this.listen = function(url_patterns, request_callback)
+	this.listen = function(url_patterns, middleware, request_callback)
 	{
-		this.url_patterns = url_patterns
+		var middleware = middleware || []
 
 		if (typeof url_patterns == 'undefined')
 			throw new Error('You must provide a list of URLs for the server to respond to.')
 
+		// Create our actual application server
 		var application = http.createServer(request_callback || this.router)
+
+		// Update this object's URL pattern list, and give access to the list and middleware to our router
+		this.url_patterns = url_patterns
+		this.middleware = middleware
+
 		application.url_patterns = this.url_patterns
+		application.middleware = this.middleware
 
 		application.listen(this.port, this.address)
 	}
