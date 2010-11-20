@@ -32,7 +32,11 @@ function router(request, response)
 		// If we didn't resolve a URL, we have a 404.
 		if (e.name == 'ResolutionError')
 		{
-			response.writeHead(404, {})
+			response.writeHead(404, {
+				'Content-Type': 'text/plain',
+			})
+
+			response.write('A 404 error has occured. The requested page was not found.')
 		}
 		else
 		{
