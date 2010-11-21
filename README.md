@@ -12,13 +12,15 @@ Well, right now it doesn't do much. I've just started it, but for now we have th
 * Flexible URL routing. You simply provide a list of URLs to zest.http.server, and it will route them to whatever views it needs to. Currently, the following types of URLs are supported:
 	* Regular Expressions *(automatically passes matches as arguments)*
 	* Static strings *(no dynamic strings, so no argument support)*
+* Templating with support for the following template languages
+	* Jade
 
 ## What is planned?
 
 There are a lot of planned features for Zest. Initially, I want to see a framework where every componenet is generally usable and flexible enough to be extended. I will be adding the following to reach this goal:
 
 * More basic HTTP tools
-* Arbitrary / flexible template loading
+* More flexible template loading, with multiple loader backends
 * Support for automatic HTML form generation
 * Object Relational Mapping *(unless someone shows me something worth the dependancy)*
 
