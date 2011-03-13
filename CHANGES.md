@@ -1,6 +1,11 @@
 Change List
 ===========
 
+0.1.2
+-----
+
+* Version bump specifically for fixing an issue in the npm registry
+
 0.1.1
 -----
 
