@@ -8,9 +8,9 @@
     "url": "git://github.com/LimpidTech/zest.git"
   },
   "author": "Brandon R. Stoner <monokrome@limpidtech.com> (http://monokro.me/)",
-  "main": "zest",
+  "main": "./lib/zest",
   "directories": {
-    "lib": "lib/zest"
+    "lib": "./lib"
   },
   "engines": {
     "node": "1.4.1"
