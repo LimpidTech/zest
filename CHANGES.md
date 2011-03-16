@@ -1,6 +1,12 @@
 Change List
 ===========
 
+0.1.3
+-----
+
+* Added a generic view factory which can be used to render templates.
+* Added a 'modules' utility library with a string-based module/attribute loader
+
 0.1.2
 -----
 
