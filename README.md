@@ -26,3 +26,17 @@ There are a lot of planned features for Zest. Initially, I want to see a framewo
 
 After this, I will be looking into expanding the current feature set with more additions and interesting features.
 
+## How does it work?
+
+Here is a simple usage example: https://gist.github.com/3108135
+
+Note that you could also use a template in a directory called `templates` with a file
+called `home.jade` in it, and your application could simply use this instead:
+
+    module.exports =
+        home: (request, response) ->
+            response.render 'home.jade'
+
+You can also pass an object as the secondary argument which can contain any variables
+that will be exposed in home.jade for your template to make use of.
+
